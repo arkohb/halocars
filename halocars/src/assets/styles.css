@@ -5,6 +5,8 @@
    ============================================================ */
 
 :root{
+   color-scheme: dark;
+  --ink:        #101014;   /* lifted off pure black so panels read */
   --ink:        #101014;   /* lifted off pure black so panels read */
   --ink-raise:  #1D1D25;   /* cards are distinct surfaces */
   --ink-line:   #34343F;   /* borders visible in daylight */
