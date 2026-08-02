@@ -5,15 +5,15 @@
    ============================================================ */
 
 :root{
-  --ink:        #0A0A0C;
-  --ink-raise:  #141419;
-  --ink-line:   #23232B;
-  --bone:       #F2EDE3;
-  --mute:       #8D887F;
-  --gold:       #E9B949;   /* Vault Gold */
-  --gold-deep:  #A67C15;
-  --kente-red:  #C8362B;
-  --kente-green:#128A5C;
+  --ink:        #101014;   /* lifted off pure black so panels read */
+  --ink-raise:  #1D1D25;   /* cards are distinct surfaces */
+  --ink-line:   #34343F;   /* borders visible in daylight */
+  --bone:       #FAF7F1;
+  --mute:       #A9A49B;   /* specs + labels readable outdoors */
+  --gold:       #F0C24E;   /* Vault Gold */
+  --gold-deep:  #B8891A;
+  --kente-red:  #D13E31;
+  --kente-green:#16A06B;
 
   --r: 14px;
   --shell: 1180px;
@@ -60,7 +60,7 @@ button, input, select{ font:inherit; color:inherit; }
 
 .masthead{
   position:sticky; top:0; z-index:40;
-  background:rgba(10,10,12,.88);
+  background:rgba(16,16,20,.90);
   backdrop-filter:blur(12px);
   border-bottom:1px solid var(--ink-line);
 }
@@ -85,7 +85,7 @@ button, input, select{ font:inherit; color:inherit; }
 }
 .btn:active{ transform:translateY(1px); }
 .btn-gold{ background:var(--gold); color:#17130A; font-weight:700; }
-.btn-gold:hover{ background:#F5C95B; }
+.btn-gold:hover{ background:#F8D06A; }
 .btn-ghost{ background:transparent; border-color:var(--ink-line); color:var(--bone); }
 .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
 .btn-block{ width:100%; padding:14px 18px; font-size:15px; }
@@ -109,7 +109,7 @@ button, input, select{ font:inherit; color:inherit; }
 
 .filterbar{
   position:sticky; top:66px; z-index:30;
-  background:rgba(10,10,12,.94); backdrop-filter:blur(12px);
+  background:rgba(16,16,20,.95); backdrop-filter:blur(12px);
   border-bottom:1px solid var(--ink-line);
   padding:12px 0;
 }
@@ -134,13 +134,13 @@ button, input, select{ font:inherit; color:inherit; }
   background-position:calc(100% - 18px) 50%, calc(100% - 13px) 50%;
   background-size:5px 5px, 5px 5px; background-repeat:no-repeat;
 }
-.filterbar select:hover, .search input:hover{ border-color:#33333d; }
+.filterbar select:hover, .search input:hover{ border-color:#4A4A58; }
 
 .chip-toggle{
   background:transparent; border:1px solid var(--ink-line); border-radius:999px;
   padding:11px 16px; font-size:14px; cursor:pointer; color:var(--mute);
 }
-.chip-toggle[aria-pressed="true"]{ border-color:var(--gold); color:var(--gold); background:rgba(233,185,73,.08); }
+.chip-toggle[aria-pressed="true"]{ border-color:var(--gold); color:var(--gold); background:rgba(240,194,78,.10); }
 
 .result-line{ margin:24px 0 18px; font-size:13px; color:var(--mute); letter-spacing:.05em; text-transform:uppercase; }
 
@@ -159,7 +159,8 @@ button, input, select{ font:inherit; color:inherit; }
   transition:border-color .2s var(--ease), transform .2s var(--ease);
   text-align:left;
 }
-.card:hover{ border-color:#34343f; transform:translateY(-3px); }
+.card{ box-shadow:0 1px 0 rgba(250,247,241,.04), 0 12px 28px rgba(0,0,0,.45); }
+.card:hover{ border-color:#4A4A58; transform:translateY(-3px); }
 .card:hover .card-photo img{ transform:scale(1.045); }
 
 /* THE SIGNATURE — woven warp band, stripe order = status */
@@ -177,10 +178,18 @@ button, input, select{ font:inherit; color:inherit; }
 }
 .warp-sold{
   background:repeating-linear-gradient(180deg,
-    #3a3a42 0 12px, var(--ink) 12px 17px, #2a2a31 17px 26px, var(--ink) 26px 31px);
+    #4A4A58 0 12px, var(--ink) 12px 17px, #35353F 17px 26px, var(--ink) 26px 31px);
 }
 
-.card-photo{ position:relative; aspect-ratio:4/3; overflow:hidden; background:#101015; }
+.card-photo{
+  position:relative; aspect-ratio:4/3; overflow:hidden;
+  background:#26262F;
+  border-bottom:1px solid var(--ink-line);
+}
+.card-photo::after{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(250,247,241,.06);
+}
 .card-photo img{ width:100%; height:100%; object-fit:cover; transition:transform .4s var(--ease); }
 .card-sold .card-photo img{ filter:grayscale(1) brightness(.6); }
 
@@ -191,10 +200,10 @@ button, input, select{ font:inherit; color:inherit; }
 }
 .tag-featured{ background:var(--gold); color:#17130A; }
 .tag-reserved{ background:var(--kente-red); color:#fff; }
-.tag-sold{ background:#2A2A31; color:var(--mute); }
+.tag-sold{ background:#3A3A46; color:var(--bone); }
 .photo-count{
   position:absolute; right:12px; bottom:12px;
-  background:rgba(10,10,12,.78); color:var(--bone);
+  background:rgba(16,16,20,.85); color:var(--bone);
   font-size:11.5px; padding:4px 9px; border-radius:999px;
 }
 
@@ -225,7 +234,7 @@ button, input, select{ font:inherit; color:inherit; }
 
 .sheet-backdrop{
   position:fixed; inset:0; z-index:80;
-  background:rgba(4,4,6,.82); backdrop-filter:blur(6px);
+  background:rgba(6,6,9,.86); backdrop-filter:blur(6px);
   display:flex; align-items:flex-end; justify-content:center;
   padding:0;
 }
@@ -244,11 +253,11 @@ button, input, select{ font:inherit; color:inherit; }
 .sheet-close{
   position:absolute; top:14px; right:14px; z-index:3;
   width:38px; height:38px; border-radius:50%; border:none;
-  background:rgba(10,10,12,.8); color:var(--bone); font-size:24px; line-height:1; cursor:pointer;
+  background:rgba(16,16,20,.85); color:var(--bone); font-size:24px; line-height:1; cursor:pointer;
 }
 .sheet-close:hover{ background:var(--gold); color:#17130A; }
 
-.gallery{ display:flex; gap:6px; overflow-x:auto; scroll-snap-type:x mandatory; background:#0d0d11; }
+.gallery{ display:flex; gap:6px; overflow-x:auto; scroll-snap-type:x mandatory; background:#26262F; }
 .gallery img{
   flex:0 0 100%; scroll-snap-align:center; aspect-ratio:4/3; object-fit:cover; width:100%;
 }
